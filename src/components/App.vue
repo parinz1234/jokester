@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <div class="container">
-      <button @click="initJokes" >fetch</button>
+      <button class="button is-primary" @click="initJokes" >fetch</button>
       <div class="notification">
         Hello World !
-        {{$store.state}}
+        {{jokeList}}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'app',
   methods: {
@@ -22,8 +22,23 @@ export default {
   // solution 2
   // methods: Object.assign({}, mapActions(['initJokes']), {toggle () { alert('555') }})
   // methods: mapActions(['initJokes']),
+
+  // without mapActions
+  // methods: {
+  //   initJokes () {
+  //     this.$store.dispatch('initJokes')
+  //   }
+  // },
+  computed: {
+    // without mapGetters
+    // jokeList () {
+    //   return this.$store.getters.jokeList
+    // }
+    ...mapGetters(['jokeList'])
+  },
+
   created () {
-    // console.log(mapActions(['initJokes']))
+    console.log(this.$store)
   }
 }
 </script>

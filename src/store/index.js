@@ -16,7 +16,10 @@ const store = new Vuex.Store({
     jokes: []
   },
   mutations,
-  actions
+  actions,
+  getters: {
+    jokeList: (state) => state.jokes
+  }
 })
 
 export default store
