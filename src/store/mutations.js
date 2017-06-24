@@ -1,8 +1,13 @@
-import * as type from './mutation-types'
-
+// import * as type from './mutation-types'
+import types from './mutation-types'
 export const mutations = {
-  [type.INIT_JOKES] (state, payload) {
+  [types.INIT_JOKES] (state, payload) {
     state.jokes.push(...payload)
+  },
+  [types.ADD_JOKE] (state, payload) {
+    state.jokes.push(payload)
+  },
+  [types.REMOVE_JOKE] (state, payload) {
+    state.jokes.splice(payload, 1)
   }
 }
-
